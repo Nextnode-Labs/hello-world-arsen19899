@@ -6,7 +6,7 @@ import {
     Link,
 } from 'react-router-dom';
 
-function Movie() {
-    return(  <div>Movie</div>)
+function Filmcard() {
+    return(  <div>Filmcard</div>)
 }
-export  default  Movie
+export  default  Filmcard
