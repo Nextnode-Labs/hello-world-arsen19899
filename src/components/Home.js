@@ -23,9 +23,9 @@ function Home() {
     return(
         <Box sx={{ width: '100%' }}>
         <Grid container justify="flex-start" rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-        {mowies.map(mov => (
+        {mowies.map((mov,index) => (
           <Grid  item xs={12} sm={4} md={3}>
-            <Link to={`/movie/${mov}`} class="links"> <Item elevation><Filmcard/></Item></Link>
+            <Link to={`/movie/${mov}`} className="links"> <Item key={index} elevation><Filmcard/></Item></Link>
           </Grid>
           ))}
         

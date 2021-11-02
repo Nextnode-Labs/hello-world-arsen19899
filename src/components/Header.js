@@ -29,11 +29,11 @@ function Header() {
     };
 return(
     
-    <div class="header">
+    <div className="header">
     <Container fixed>
     <Grid container justify="flex-start" rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-    <Grid  item xs={12} sm={4} md={3} class="logo"><Link to="/">MY LOGO</Link></Grid>
-    <Grid  item xs={12} sm={4} md={3} class="search">
+    <Grid  item xs={12} sm={4} md={3} className="logo"><Link to="/">MY LOGO</Link></Grid>
+    <Grid  item xs={12} sm={4} md={3} className="search">
     <Autocomplete
       disablePortal
       id="combo-box-demo"
@@ -41,7 +41,7 @@ return(
       sx={{ width: 1}}
       renderInput={(params) => <TextField {...params} label="Search" />}
     /></Grid>
-    <Grid  item xs={12} sm={4} md={3} class="logo">
+    <Grid  item xs={12} sm={4} md={3} className="logo">
     <React.Fragment>
       <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
         
