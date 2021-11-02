@@ -1,6 +1,235 @@
 import React from "react";
-import { Router } from "react-router-dom";
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link,
+} from 'react-router-dom';
+import Grid from '@mui/material/Grid';
+import Container from '@mui/material/Container';
+import TextField from '@mui/material/TextField';
+import Autocomplete from '@mui/material/Autocomplete';
+import Box from '@mui/material/Box';
+import Avatar from '@mui/material/Avatar';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import Divider from '@mui/material/Divider';
+import IconButton from '@mui/material/IconButton';
+import Tooltip from '@mui/material/Tooltip';
+import Logout from '@mui/icons-material/Logout';
 function Header() {
-return(  <div>1111</div>)
+    const [anchorEl, setAnchorEl] = React.useState(null);
+    const open = Boolean(anchorEl);
+    const handleClick = (event) => {
+      setAnchorEl(event.currentTarget);
+    };
+    const handleClose = () => {
+      setAnchorEl(null);
+    };
+return(
+    
+    <div className="header">
+    <Container fixed>
+    <Grid container justify="flex-start" rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+    <Grid  item xs={12} sm={4} md={3} className="logo"><Link to="/">MY LOGO</Link></Grid>
+    <Grid  item xs={12} sm={4} md={3} className="search">
+    <Autocomplete
+      disablePortal
+      id="combo-box-demo"
+      options={top100Films}
+      sx={{ width: 1}}
+      renderInput={(params) => <TextField {...params} label="Search" />}
+    /></Grid>
+    <Grid  item xs={12} sm={4} md={3} className="logo">
+    <React.Fragment>
+      <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
+        
+        <Tooltip title="Account settings">
+          <IconButton onClick={handleClick} size="small" sx={{ ml: 2 }}>
+            <Avatar sx={{ width: 32, height: 32 }}>♛</Avatar>
+          </IconButton>
+        </Tooltip>
+      </Box>
+      <Menu
+        anchorEl={anchorEl}
+        open={open}
+        onClose={handleClose}
+        onClick={handleClose}
+        PaperProps={{
+          elevation: 0,
+          sx: {
+            overflow: 'visible',
+            filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
+            mt: 1.5,
+            '& .MuiAvatar-root': {
+              width: 32,
+              height: 32,
+              ml: -0.5,
+              mr: 1,
+            },
+            '&:before': {
+              content: '""',
+              display: 'block',
+              position: 'absolute',
+              top: 0,
+              right: 14,
+              width: 10,
+              height: 10,
+              bgcolor: 'background.paper',
+              transform: 'translateY(-50%) rotate(45deg)',
+              zIndex: 0,
+            },
+          },
+        }}
+        transformOrigin={{ horizontal: 'right', vertical: 'top' }}
+        anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
+      >
+        <MenuItem>
+          <Avatar /> Profile
+        </MenuItem>
+        <MenuItem>
+          <Avatar /> Favorit
+        </MenuItem>
+        <Divider />
+
+        <MenuItem>
+          <ListItemIcon>
+            <Logout fontSize="small" />
+          </ListItemIcon>
+          Logout
+        </MenuItem>
+      </Menu>
+    </React.Fragment>
+    </Grid>
+    </Grid>
+    </Container></div>)
 }
+
+const top100Films = [
+    { label: 'The Shawshank Redemption', year: 1994 },
+    { label: 'The Godfather', year: 1972 },
+    { label: 'The Godfather: Part II', year: 1974 },
+    { label: 'The Dark Knight', year: 2008 },
+    { label: '12 Angry Men', year: 1957 },
+    { label: "Schindler's List", year: 1993 },
+    { label: 'Pulp Fiction', year: 1994 },
+    {
+      label: 'The Lord of the Rings: The Return of the King',
+      year: 2003,
+    },
+    { label: 'The Good, the Bad and the Ugly', year: 1966 },
+    { label: 'Fight Club', year: 1999 },
+    {
+      label: 'The Lord of the Rings: The Fellowship of the Ring',
+      year: 2001,
+    },
+    {
+      label: 'Star Wars: Episode V - The Empire Strikes Back',
+      year: 1980,
+    },
+    { label: 'Forrest Gump', year: 1994 },
+    { label: 'Inception', year: 2010 },
+    {
+      label: 'The Lord of the Rings: The Two Towers',
+      year: 2002,
+    },
+    { label: "One Flew Over the Cuckoo's Nest", year: 1975 },
+    { label: 'Goodfellas', year: 1990 },
+    { label: 'The Matrix', year: 1999 },
+    { label: 'Seven Samurai', year: 1954 },
+    {
+      label: 'Star Wars: Episode IV - A New Hope',
+      year: 1977,
+    },
+    { label: 'City of God', year: 2002 },
+    { label: 'Se7en', year: 1995 },
+    { label: 'The Silence of the Lambs', year: 1991 },
+    { label: "It's a Wonderful Life", year: 1946 },
+    { label: 'Life Is Beautiful', year: 1997 },
+    { label: 'The Usual Suspects', year: 1995 },
+    { label: 'Léon: The Professional', year: 1994 },
+    { label: 'Spirited Away', year: 2001 },
+    { label: 'Saving Private Ryan', year: 1998 },
+    { label: 'Once Upon a Time in the West', year: 1968 },
+    { label: 'American History X', year: 1998 },
+    { label: 'Interstellar', year: 2014 },
+    { label: 'Casablanca', year: 1942 },
+    { label: 'City Lights', year: 1931 },
+    { label: 'Psycho', year: 1960 },
+    { label: 'The Green Mile', year: 1999 },
+    { label: 'The Intouchables', year: 2011 },
+    { label: 'Modern Times', year: 1936 },
+    { label: 'Raiders of the Lost Ark', year: 1981 },
+    { label: 'Rear Window', year: 1954 },
+    { label: 'The Pianist', year: 2002 },
+    { label: 'The Departed', year: 2006 },
+    { label: 'Terminator 2: Judgment Day', year: 1991 },
+    { label: 'Back to the Future', year: 1985 },
+    { label: 'Whiplash', year: 2014 },
+    { label: 'Gladiator', year: 2000 },
+    { label: 'Memento', year: 2000 },
+    { label: 'The Prestige', year: 2006 },
+    { label: 'The Lion King', year: 1994 },
+    { label: 'Apocalypse Now', year: 1979 },
+    { label: 'Alien', year: 1979 },
+    { label: 'Sunset Boulevard', year: 1950 },
+    {
+      label: 'Dr. Strangelove or: How I Learned to Stop Worrying and Love the Bomb',
+      year: 1964,
+    },
+    { label: 'The Great Dictator', year: 1940 },
+    { label: 'Cinema Paradiso', year: 1988 },
+    { label: 'The Lives of Others', year: 2006 },
+    { label: 'Grave of the Fireflies', year: 1988 },
+    { label: 'Paths of Glory', year: 1957 },
+    { label: 'Django Unchained', year: 2012 },
+    { label: 'The Shining', year: 1980 },
+    { label: 'WALL·E', year: 2008 },
+    { label: 'American Beauty', year: 1999 },
+    { label: 'The Dark Knight Rises', year: 2012 },
+    { label: 'Princess Mononoke', year: 1997 },
+    { label: 'Aliens', year: 1986 },
+    { label: 'Oldboy', year: 2003 },
+    { label: 'Once Upon a Time in America', year: 1984 },
+    { label: 'Witness for the Prosecution', year: 1957 },
+    { label: 'Das Boot', year: 1981 },
+    { label: 'Citizen Kane', year: 1941 },
+    { label: 'North by Northwest', year: 1959 },
+    { label: 'Vertigo', year: 1958 },
+    {
+      label: 'Star Wars: Episode VI - Return of the Jedi',
+      year: 1983,
+    },
+    { label: 'Reservoir Dogs', year: 1992 },
+    { label: 'Braveheart', year: 1995 },
+    { label: 'M', year: 1931 },
+    { label: 'Requiem for a Dream', year: 2000 },
+    { label: 'Amélie', year: 2001 },
+    { label: 'A Clockwork Orange', year: 1971 },
+    { label: 'Like Stars on Earth', year: 2007 },
+    { label: 'Taxi Driver', year: 1976 },
+    { label: 'Lawrence of Arabia', year: 1962 },
+    { label: 'Double Indemnity', year: 1944 },
+    {
+      label: 'Eternal Sunshine of the Spotless Mind',
+      year: 2004,
+    },
+    { label: 'Amadeus', year: 1984 },
+    { label: 'To Kill a Mockingbird', year: 1962 },
+    { label: 'Toy Story 3', year: 2010 },
+    { label: 'Logan', year: 2017 },
+    { label: 'Full Metal Jacket', year: 1987 },
+    { label: 'Dangal', year: 2016 },
+    { label: 'The Sting', year: 1973 },
+    { label: '2001: A Space Odyssey', year: 1968 },
+    { label: "Singin' in the Rain", year: 1952 },
+    { label: 'Toy Story', year: 1995 },
+    { label: 'Bicycle Thieves', year: 1948 },
+    { label: 'The Kid', year: 1921 },
+    { label: 'Inglourious Basterds', year: 2009 },
+    { label: 'Snatch', year: 2000 },
+    { label: '3 Idiots', year: 2009 },
+    { label: 'Monty Python and the Holy Grail', year: 1975 },
+  ];
 export  default  Header
