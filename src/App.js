@@ -6,6 +6,8 @@ import {
   Route,
   Link,
 } from 'react-router-dom';
+import CssBaseline from '@mui/material/CssBaseline';
+import Container from '@mui/material/Container';
 import Header from "../src/components/Header";
 import Footer from "../src/components/Footer";
 import Home from "./components/Home";
@@ -18,12 +20,18 @@ function App() {
   return (
 <Router>
     <div className="App">
+
         <Header/>
+        <React.Fragment>
+        <CssBaseline />
+        <Container>
       <Switch>
         <Route exact path="/" component={Home}/>
         <Route path="/movie/:id" component={Movie}/>
         <Route component={Page404}/>
       </Switch>
+      </Container>
+    </React.Fragment>
         <Footer/>
     </div>
 </Router>
