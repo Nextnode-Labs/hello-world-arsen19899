@@ -6,6 +6,8 @@ import {
   Route,
   Link,
 } from 'react-router-dom';
+import {useDispatch, useSelector} from 'react-redux'
+import {fetchPosts} from './redux/actions'
 import CssBaseline from '@mui/material/CssBaseline';
 import Container from '@mui/material/Container';
 import Header from "../src/components/Header";
